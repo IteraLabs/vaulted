@@ -1,0 +1,77 @@
+[workspace]
+
+resolver = "2"
+
+members = [
+    "programs/usdv-program",
+    "programs/usdv-client", 
+    "programs/usdv-utils",
+    "programs/usdv-results",
+]
+
+[workspace.package]
+version = "0.0.1"
+authors = ["USDv Team <contact@usdv.xyz>"]
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/iteralabs/usdv"
+homepage = "https://usdv.com"
+documentation = "https://docs.usdv.com"
+keywords = ["solana", "stablecoin", "defi", "cryptocurrency"]
+categories = ["cryptography::cryptocurrencies", "web-programming"]
+rust-version = "1.85.0"
+exclude = ["assets/*", ".github", "Makefile.toml", "CONTRIBUTING.md", "*.log", "tags"]
+include = ["katex-header.html"]
+
+[workspace.dependencies]
+
+# Anchor Framework
+anchor-lang = { version = "0.31.0", features = ["init-if-needed"] }
+anchor-client = { version = "0.31.1" }
+anchor-spl = { version = "0.31.0" }
+
+chrono = { version = "0.4.41" }
+
+# Solana Core
+solana-sdk =  { version = "2.2.18" }
+solana-client =  { version = "2.2.18" }
+solana-program = {version = "1.16.24" }
+
+# SPL Token Libraries
+spl-token = { version = "4.0.0" }
+spl-associated-token-account = { version = "7.0.0" }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+borsh = { version = "0.10.3" }
+pyth-solana-receiver-sdk = { version = "0.6.1" }
+
+# Async Runtime
+tokio = { version = "1.45", features = ["full"] }
+futures = { version = "0.3" }
+
+# Error Handling
+thiserror = { version = "1.0" }
+anyhow = { version = "1.0" }
+
+# Logging
+log = { version = "0.4" }
+toml = { version = "0.8" }
+env_logger = { version = "0.10" }
+
+# Testing
+litesvm = { version = "0.2.0" }
+assert_matches = { version = "1.5" }
+libm = { version = "0.2.15" }
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+
+[profile.release.build-override]
+opt-level = 3
+incremental = false
+codegen-units = 1
+

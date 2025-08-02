@@ -1,0 +1,42 @@
+[package]
+name = "usdv_utils"
+description = "Utils for the USDv"
+publish = false
+readme = "README.md"
+version = "0.0.1"
+rust-version = "1.85.0"
+edition = "2024"
+
+exclude = ["assets/*", ".github", "Makefile.toml", "*.log", "tags"]
+include = [
+    "src/**/*",
+    "Cargo.toml",
+    "README.md",
+    "../katex-header.html"
+]
+
+authors = ["IteraLabs.xyz"]
+documentation = "https://docs.rs/usdv/"
+repository = "https://github.com/iteralabs/usdv"
+homepage = "https://iteralabs.ai/usdv"
+keywords = ["framework", "math", "crypto"]
+categories = ["data-structures", "development-tools", "finance"]
+license = "MIT"
+
+[lib]
+name = "usdv_utils"
+path = "src/lib.rs"
+
+[dependencies]
+usdv_results = { path = "../usdv-results", version = "0.0.1" }
+
+anchor-lang = { version = "0.31.1" }
+anchor-client = { version = "0.31.1" }
+chrono = { workspace = true }
+pyth-solana-receiver-sdk = { version = "0.6.1" }
+libm = {version = "0.2.15" }
+solana-sdk = { version = "2.2.18" }
+tokio = { version = "1.45" }
+solana-client = { version = "2.2.18" }
+thiserror = { workspace = true }
+
